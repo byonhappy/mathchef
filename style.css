@@ -1,0 +1,177 @@
+:root{
+  --hdrH: 72px;     /* 헤더 높이 (타이틀 1줄) */
+  --navH: 58px;     /* 네비 높이 */
+  --brand:#c5113d;  /* 상단 그라데이션 (수학 테마에 맞춰 붉은 계열로 변경) */
+  --brand2:#ff698d;
+  --ink:#0f172a;    /* 본문 텍스트 */
+  --line:#e5e7eb;   /* 라인 */
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:'Inter',sans-serif}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer}
+
+/* ===== 헤더 ===== */
+.site-header{
+  position:sticky; top:0; z-index:1000;
+  height:var(--hdrH);
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(90deg,var(--brand),var(--brand2));
+  box-shadow:0 2px 0 rgba(0,0,0,.06);
+}
+.header-inner{
+  width:100%;max-width:1200px;padding:0 16px;
+  text-align: center; /* 헤더 제목 중앙 정렬 */
+}
+.title{
+  margin:0; color:#fff; font-weight:900;
+  font-size:clamp(20px,2.1vw,36px);
+  letter-spacing:.5px; line-height:1; white-space:nowrap;
+  text-shadow:0 12px 38px rgba(0,0,0,.25), 0 1px 0 rgba(0,0,0,.2);
+}
+.title .em{color:#ffc1c1} /* 강조 색상 변경 */
+
+/* ===== 네비 ===== */
+.main-nav{
+  position:sticky; top:var(--hdrH); z-index:999;
+  height:var(--navH);
+  display:flex; align-items:center;
+  background:#fff; border-bottom:1px solid var(--line);
+}
+.nav-list{
+  list-style:none; display:flex; gap:28px;
+  margin:0 auto; padding:0 16px; width:100%; max-width:1200px;
+  justify-content:center;
+}
+.main-nav a{
+  text-decoration:none; color:var(--ink); font-weight:800;
+  padding:8px 6px; display:inline-block;
+}
+
+/* ===== 섹션 ===== */
+.section{padding:32px 16px;background:#fff}
+.section-title{
+  margin:0 auto 16px; color:var(--ink); font-weight:900;
+  font-size:clamp(22px,2vw,32px);
+  border-bottom:3px solid var(--brand2);
+  padding-bottom:8px;
+  max-width:800px; /* 섹션 제목 너비를 포스터와 맞춤 */
+}
+
+/* Layer 3 (#venue) 중앙 정렬을 위한 스타일 */
+.section-center {
+    text-align: center;
+}
+.section-center .section-title {
+    text-align: center; /* 섹션 제목 중앙 정렬 */
+}
+
+
+/* 포스터(가로 폭 통일) */
+.poster-wrap{max-width:800px;margin:0 auto} /* 포스터 너비 조정 */
+.poster-img{width:100%;height:auto;object-fit:cover;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+
+/* ===== 알파벳 버튼 스타일 ===== */
+.alphabet-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.alpha-btn {
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--brand2);
+    background-color: #fff;
+    color: var(--brand);
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    transition: background-color 0.15s, transform 0.15s;
+    flex-shrink: 0;
+}
+.alpha-btn:hover {
+    background-color: var(--brand2);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.map-hint {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+/* 기존 .map-overlay 관련 스타일은 삭제했습니다. */
+
+
+/* ===== 라이트박스(부스 목록) ===== */
+.lightbox{
+  position:fixed; inset:0; z-index:2000; display:none;
+  align-items:center; justify-content:center;
+  background:rgba(0,0,0,.5);  /* 어두운 배경 */
+  backdrop-filter: blur(4px);
+  padding: 20px;
+}
+.lightbox.open{display:flex}
+.lightbox__content{
+  position:relative; background:#fff; border-radius:16px;
+  width:min(600px, 95vw); /* 부스 목록에 맞춰 너비 조정 */
+  max-height:85vh;
+  padding:25px;
+  overflow-y: auto; /* 내용이 길면 스크롤 가능 */
+  box-shadow:0 20px 50px rgba(0,0,0,.3);
+  display:flex; flex-direction:column;
+}
+.lightbox-title{
+  margin:0 0 15px; font-weight:900; font-size:1.5rem; color:var(--brand);
+  border-bottom:2px solid #eee; padding-bottom:10px;
+}
+.lightbox-content{
+  display:flex; flex-direction:column; gap:8px;
+  font-size:0.95rem;
+}
+.booth-item{
+  display:flex; gap:10px; padding:8px 0; border-bottom:1px dotted var(--line);
+}
+.booth-num{
+  font-weight:900; color:var(--brand2); width:40px; flex-shrink:0; text-align:right;
+}
+.booth-name{
+  font-weight:600; color:var(--ink); flex-grow:1;
+}
+
+/* 닫기 버튼 */
+.lightbox__close{
+  position:absolute; right:12px; top:12px; background:var(--brand);
+  color:#fff; border-radius:50%; padding:10px 14px; font-weight:900;
+  box-shadow:0 2px 4px rgba(0,0,0,.15);
+  transition: transform 0.2s;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+}
+.lightbox__close:hover {
+    transform: rotate(90deg);
+}
+
+/* 이전/다음 버튼 삭제 (부스 목록에는 필요 없음) */
+.lightbox__prev, .lightbox__next {
+    display: none;
+}
+
+/* ===== 우측하단 버튼 ===== */
+.to-top{
+  position:fixed; right:18px; bottom:18px; z-index:1500; display:none;
+  width:56px; height:56px; border:none; border-radius:50%;
+  background:linear-gradient(180deg,var(--brand),var(--brand2)); color:#fff; font-weight:900;
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+}
+.to-top.show{display:block}
+
+/* (접근성) 포커스 */
+a:focus, button:focus{outline:3px solid #22d3ee; outline-offset:2px}
