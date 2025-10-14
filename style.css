@@ -73,33 +73,63 @@ button{font:inherit;cursor:pointer}
 .poster-wrap{max-width:800px;margin:0 auto} /* 포스터 너비 조정 */
 .poster-img{width:100%;height:auto;object-fit:cover;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
 
-/* ===== 알파벳 버튼 스타일 ===== */
-.alphabet-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    max-width: 800px;
+/* ===== 3열 버튼 컨테이너 스타일 (장소명 텍스트 버튼으로 수정) ===== */
+.floor-buttons-container {
+    display: flex; /* Flexbox 활성화 */
+    justify-content: space-around; /* 열 간격 균등 분배 */
+    gap: 15px;
+    max-width: 900px;
     margin: 20px auto;
+    padding: 10px;
+    background-color: #f8f9fa; /* 배경색 추가 */
+    border-radius: 12px;
+    border: 1px solid var(--line);
 }
 
-.alpha-btn {
-    width: 48px;
-    height: 48px;
+.floor-column {
+    display: flex;
+    flex-direction: column; /* 버튼들을 세로로 정렬 */
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    flex: 1 1 0; /* 각 열이 균등한 너비를 가지도록 설정 */
+    min-width: 100px;
+}
+
+.floor-column h3 {
+    margin: 0 0 10px 0;
+    color: var(--brand);
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--brand2);
+    padding-bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+/* ===== 버튼 스타일 (.floor-btn) ===== */
+.floor-btn {
+    width: 100%; /* 열 너비에 맞춤 */
+    min-height: 40px; 
+    padding: 5px 8px; 
     border: 2px solid var(--brand2);
     background-color: #fff;
     color: var(--brand);
     font-weight: 900;
-    font-size: 1.2rem;
-    border-radius: 50%;
+    font-size: 0.9rem; 
+    border-radius: 8px; /* 사각형에 가까운 모양으로 변경 */
     transition: background-color 0.15s, transform 0.15s;
     flex-shrink: 0;
+    text-align: center;
 }
-.alpha-btn:hover {
+.floor-btn:hover {
     background-color: var(--brand2);
     color: #fff;
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
+
+/* 기존 .alphabet-buttons 및 .alpha-btn 스타일은 이제 사용하지 않습니다. */
+/* .alphabet-buttons, .alpha-btn { display: none; } */
+
 
 .map-hint {
     color: #666;
